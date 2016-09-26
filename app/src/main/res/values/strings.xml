@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">NeonProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="send_money">Enviar Dinheiro</string>
+    <string name="history">Histórico de envios</string>
+    <string name="user_name">Leandro Silverio</string>
+    <string name="email">leandrocastelli@gmail.com</string>
+<!--
+    <string-array name="contacts_name">
+        <item name="profile_01">Jennifer Aniston</item>
+        <item name="profile_02">Michael Jackson</item>
+        <item name="profile_03">Anderson Silva</item>
+        <item name="profile_04">Margo Robbie</item>
+        <item name="profile_05">Brad Pitt</item>
+        <item name="profile_06">Angelina Jolie</item>
+        <item name="profile_07">Walter White</item>
+        <item name="profile_08">Neymar Junior</item>
+        <item name="profile_09">Lionel Messi</item>
+        <item name="profile_10">Samuel Rosa</item>
+        <item name="profile_11">Carolina Dickman</item>
+        <item name="profile_12">Thiago Ribeiro</item>
+        <item name="profile_13">Galvão Bueno</item>
+        <item name="profile_14">Peter Parker</item>
+        <item name="profile_15">Roger Waters</item>
+    </string-array>
+    <string-array name="contacts_number">
+        <item name="profile_01">011980216598</item>
+        <item name="profile_02">01146624568</item>
+        <item name="profile_03">01198541326</item>
+        <item name="profile_04">01198465713</item>
+        <item name="profile_05">01199874666</item>
+        <item name="profile_06">01194666321</item>
+        <item name="profile_07">01197798463</item>
+        <item name="profile_08">01194621356</item>
+        <item name="profile_09">01198886521</item>
+        <item name="profile_10">01198665312</item>
+        <item name="profile_11">01199744466</item>
+        <item name="profile_12">01199562315</item>
+        <item name="profile_13">01199965311</item>
+        <item name="profile_14">01196536566</item>
+        <item name="profile_15">01197465316</item>
+    </string-array>
+-->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="valor_enviar">Valor a enviar:</string>
+    <string name="initialValue">R$ 0,00</string>
+    <string name="send">Enviar</string>
+    <string name="sending_money">Enviando Dinheiro</string>
+    <string name="sent_sucess">Dinheiro enviado com sucesso</string>
+    <string name="sent_fail">Falha ao enviar</string>
+    <string name="loading">Carregando...</string>
+</resources>

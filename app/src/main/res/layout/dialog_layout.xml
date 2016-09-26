@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/dialog_background">
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_delete"
+        android:background="@android:color/transparent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+    <TextView
+        android:id="@+id/lettersDialog"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:textSize="60dp"
+        android:textColor="@color/colorAccent"
+        android:textAlignment="center"
+        android:padding="10dp"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="96dp" android:layout_height="96dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorAccent"
+            android:layout_margin="8dp"
+
+            android:src="@android:color/transparent" android:id="@+id/dialogPicture"
+            />
+
+        <TextView
+            android:id="@+id/dialogName"
+            android:text="Mock Name"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/dialogNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(11)98021-8824"
+            android:textAppearance="?android:textAppearanceMedium"
+            />
+
+        <TextView
+            android:layout_marginTop="16dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/valor_enviar"
+            android:textAppearance="?android:textAppearanceMedium"
+            />
+        <EditText
+            android:id="@+id/edtValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/edittext_background"
+            android:inputType="numberDecimal"
+            android:text="@string/initialValue"
+            android:textSize="56dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:maxLines="1"/>
+        <Button
+            android:id="@+id/dialogSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttondialog_background"
+            android:textColor="@color/colorBackground"
+            android:text="@string/send"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</RelativeLayout>
