@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import lcs.neonproject.contacts.ContactsAdapter;
 import lcs.neonproject.utils.ImageHelper;
 import lcs.neonproject.utils.Utils;
 
@@ -46,6 +47,19 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
        // getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        try {
+            if (ContactsAdapter.progressDialog != null && ContactsAdapter.progressDialog.isShowing()) {
+                ContactsAdapter.progressDialog.dismiss();
+                ContactsAdapter.progressDialog = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        super.onDestroy();
     }
 
     @Override

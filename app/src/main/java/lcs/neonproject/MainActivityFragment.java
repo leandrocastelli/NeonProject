@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import lcs.neonproject.contacts.ContactsAdapter;
 import lcs.neonproject.contacts.ContactsManager;
 import lcs.neonproject.utils.Constants;
 import lcs.neonproject.utils.Utils;
@@ -54,7 +55,9 @@ public class MainActivityFragment extends Fragment {
         userEmail.setText(getString(R.string.email));
         //Just Download token
         Utils.getToken(getString(R.string.user_name), getString(R.string.email), getActivity());
-
+        if (ContactsAdapter.progressDialog != null && ContactsAdapter.progressDialog.isShowing()) {
+            ContactsAdapter.progressDialog.dismiss();
+        }
         btnSendMoney = (Button)view.findViewById(R.id.btnSendMoney);
         btnSendMoney.setOnClickListener(new View.OnClickListener() {
             @Override

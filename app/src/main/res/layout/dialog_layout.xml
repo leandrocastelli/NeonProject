@@ -19,7 +19,7 @@
         android:layout_height="96dp"
         android:layout_centerHorizontal="true"
         android:layout_margin="8dp"
-        android:textSize="60dp"
+        android:textSize="58dp"
         android:textColor="@color/colorAccent"
         android:textAlignment="center"
         android:padding="10dp"

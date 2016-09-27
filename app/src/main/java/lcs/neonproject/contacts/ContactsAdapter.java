@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import lcs.neonproject.MainActivity;
 import lcs.neonproject.R;
 import lcs.neonproject.model.Contact;
 import lcs.neonproject.model.Model;
@@ -50,6 +51,8 @@ import lcs.neonproject.net.NetDownloader;
 import lcs.neonproject.utils.Constants;
 import lcs.neonproject.utils.EditTextWatcher;
 import lcs.neonproject.utils.Utils;
+
+import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by Leandro on 9/24/2016.
@@ -61,7 +64,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private List<Model> mDataSet;
     private boolean isHistory = false;
     public static AdapterHandler myHandler;
-    public ProgressDialog progressDialog;
+    public static ProgressDialog progressDialog;
 
     class MyHolder extends RecyclerView.ViewHolder{
         public MyHolder(View v) {
@@ -72,6 +75,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public ContactsAdapter(Context context, boolean isHistory) {
         this.context = context;
         this.isHistory = isHistory;
+        myHandler = new AdapterHandler();
         if (isHistory) {
             NetDownloader.getInstance().getHistory(context);
 
@@ -82,11 +86,16 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             myThread.start();
 
         }
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(context.getString(R.string.loading));
-        progressDialog.show();
 
-        myHandler = new AdapterHandler();
+
+        progressDialog = new ProgressDialog(context);
+
+        progressDialog.setMessage(context.getString(R.string.loading));
+        if (progressDialog!= null) {
+            progressDialog.show();
+        }
+
+
         this.notifyDataSetChanged();
     }
     @Override
@@ -213,7 +222,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } //History
             else {
             TextView dateText = (TextView)holder.itemView.findViewById(R.id.historyInfo);
-            Transaction transaction = (Transaction)mDataSet.get(position);
+            Model temp = mDataSet.get(position);
+            Transaction transaction;
+            if (temp instanceof Transaction) {
+                transaction = (Transaction)temp;
+            } else {
+                return;
+            }
             Date date = Utils.formatDate(transaction.getDate());
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);
@@ -247,17 +262,24 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                     mDataSet = postList;
                     notifyDataSetChanged();
-                    progressDialog.dismiss();
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
                     break;
                 }
                 case Constants.MSG_CONTACTS_UPDATE: {
                     Bundle bundle = msg.getData();
                     mDataSet = (List<Model>) bundle.getSerializable("Contacts");
                     notifyDataSetChanged();
-                    progressDialog.dismiss();
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
                     break;
                 }
-                default: progressDialog.dismiss();
+                default: {
+                    if (progressDialog!= null && progressDialog.isShowing())
+                        progressDialog.dismiss();
+                }
             }
         }
     }

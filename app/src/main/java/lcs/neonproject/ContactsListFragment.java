@@ -60,4 +60,11 @@ public class ContactsListFragment extends Fragment {
         return super.onOptionsItemSelected(menuItem);
     }
 
+    @Override
+    public void onStop() {
+        if (ContactsAdapter.progressDialog != null && ContactsAdapter.progressDialog.isShowing()) {
+            ContactsAdapter.progressDialog.dismiss();
+        }
+        super.onStop();
+    }
 }
